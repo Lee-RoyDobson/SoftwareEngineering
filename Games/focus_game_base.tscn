@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://bf0t5ftvd4mei"]
+
+[ext_resource type="Script" uid="uid://byh1vkq55opp3" path="res://Games/focus_game_base.gd" id="1_o2n6c"]
+[ext_resource type="Texture2D" uid="uid://dg61xl0b1rsp" path="res://icon.svg" id="1_p30kk"]
+[ext_resource type="Script" uid="uid://d0o1fi0vgpcwc" path="res://Games/target_area.gd" id="3_op6y1"]
+[ext_resource type="Script" uid="uid://6hgcipr5bf40" path="res://Games/distraction_area.gd" id="4_a676r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p30kk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2n6c"]
+size = Vector2(125.162, 80.4814)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op6y1"]
+size = Vector2(129, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52hcd"]
+size = Vector2(235, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhe6a"]
+size = Vector2(1317.56, 123.918)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a676r"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0.999601, 0.985555, 0.97559, 1)
+
+[node name="FocusGameBase" type="Node2D"]
+script = ExtResource("1_o2n6c")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(576, 323)
+scale = Vector2(8.98438, 5.04688)
+texture = ExtResource("1_p30kk")
+
+[node name="TargetArea" type="Area2D" parent="." groups=["Objects"]]
+script = ExtResource("3_op6y1")
+
+[node name="Target" type="Sprite2D" parent="TargetArea" groups=["Objects"]]
+position = Vector2(203, 122)
+scale = Vector2(125.375, 77.375)
+texture = SubResource("PlaceholderTexture2D_p30kk")
+
+[node name="TargetCollsion" type="CollisionShape2D" parent="TargetArea" groups=["Objects"]]
+position = Vector2(202.419, 124)
+shape = SubResource("RectangleShape2D_o2n6c")
+
+[node name="Timer" type="Label" parent="."]
+z_index = 5
+offset_left = 907.0
+offset_top = 36.0
+offset_right = 1089.0
+offset_bottom = 62.0
+
+[node name="Distraction1Area" type="Area2D" parent="." groups=["Objects"]]
+script = ExtResource("4_a676r")
+
+[node name="Distraction1" type="Sprite2D" parent="Distraction1Area" groups=["Objects"]]
+position = Vector2(210, 416)
+texture = ExtResource("1_p30kk")
+flip_v = true
+
+[node name="DistractionCollison" type="CollisionShape2D" parent="Distraction1Area" groups=["Objects"]]
+position = Vector2(210.5, 417)
+shape = SubResource("RectangleShape2D_op6y1")
+
+[node name="BoundsLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundsLeft"]
+position = Vector2(-112, 325)
+shape = SubResource("RectangleShape2D_52hcd")
+
+[node name="BoundsTop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundsTop"]
+position = Vector2(560, -70)
+shape = SubResource("RectangleShape2D_hhe6a")
+
+[node name="BoundsBottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BoundsBottom"]
+position = Vector2(585, 716)
+shape = SubResource("RectangleShape2D_hhe6a")
+
+[node name="BoundsRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundsRight"]
+position = Vector2(1273, 320)
+shape = SubResource("RectangleShape2D_52hcd")
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+z_index = 5
+offset_left = 520.0
+offset_top = 488.0
+offset_right = 632.0
+offset_bottom = 552.0
+text = "MAIN MENU"
+
+[node name="FinishedLabel" type="Label" parent="."]
+z_index = 5
+offset_left = 368.0
+offset_top = 216.0
+offset_right = 784.0
+offset_bottom = 408.0
+label_settings = SubResource("LabelSettings_a676r")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="area_entered" from="BoundsLeft" to="TargetArea" method="switch_x"]
+[connection signal="area_entered" from="BoundsTop" to="TargetArea" method="switch_y"]
+[connection signal="area_entered" from="BoundsBottom" to="TargetArea" method="switch_y"]
+[connection signal="area_entered" from="BoundsRight" to="TargetArea" method="switch_x"]
+[connection signal="pressed" from="Button" to="." method="open_main_menu"]

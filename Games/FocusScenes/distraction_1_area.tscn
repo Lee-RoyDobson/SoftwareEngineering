@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://43omdfnr5n3w"]
+
+[ext_resource type="Script" uid="uid://6hgcipr5bf40" path="res://Games/distraction_area.gd" id="1_hceev"]
+[ext_resource type="Texture2D" uid="uid://dg61xl0b1rsp" path="res://icon.svg" id="2_2q3qh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op6y1"]
+size = Vector2(129, 126)
+
+[node name="Distraction1Area" type="Area2D" groups=["Objects"]]
+script = ExtResource("1_hceev")
+
+[node name="Distraction1" type="Sprite2D" parent="." groups=["Objects"]]
+position = Vector2(210, 416)
+texture = ExtResource("2_2q3qh")
+flip_v = true
+
+[node name="DistractionCollison" type="CollisionShape2D" parent="." groups=["Objects"]]
+position = Vector2(210.5, 417)
+shape = SubResource("RectangleShape2D_op6y1")
