@@ -30,9 +30,9 @@ grow_vertical = 2
 layout_mode = 2
 text = "Save Record"
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="AddEmployee" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Add Employee"
 
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]

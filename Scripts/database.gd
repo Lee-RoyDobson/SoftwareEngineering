@@ -13,10 +13,14 @@ func save_record(employee: int, feedback: String, score: int) -> bool:
 			"feedback": feedback
 		}
 		data_entry.store_line(JSON.stringify(data))
+		
+		var current_data = FileAccess.open("res://Data/Employees/" + str(employee) + "/" + "Current", FileAccess.WRITE)
+		current_data.store_line(JSON.stringify(data))
 		return true
 	else:
 		print("Data entry not found at " + path)
 		return false
+		
 
 func retrieve_difficulty(employee: int) -> int:
 	return 0
@@ -24,7 +28,7 @@ func retrieve_difficulty(employee: int) -> int:
 func retrieve_feedback(employee: int) -> String:
 	return "Good!"
 
-func add_employee(employee: int, password: String) -> bool:
+func add_employee(employee: int, password: String, access: int) -> bool:
 	var path = "res://Data/Employees/" + str(employee) + "/LoginDetails"
 	
 	var directory = DirAccess.open("res://Data/Employees/")
@@ -40,7 +44,7 @@ func add_employee(employee: int, password: String) -> bool:
 		var data = {
 			"username": employee,
 			"password": password,
-			"access": 0
+			"access": access
 		}
 		
 		data_entry.store_line(JSON.stringify(data))
