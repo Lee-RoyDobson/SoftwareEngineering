@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://ciops28td2w5u"]
+
+[ext_resource type="Script" uid="uid://s5tqwbtpmjy5" path="res://Menus/LoginManager.gd" id="1_ox3ru"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Canvas" type="CanvasLayer" parent="."]
+script = ExtResource("1_ox3ru")
+
+[node name="Username" type="Label" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -24.0
+offset_right = -75.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Username: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Password" type="Label" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = 76.0
+offset_right = -75.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Password: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Login" type="Label" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -240.0
+offset_right = 147.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Submit" type="Button" parent="Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = 217.0
+offset_right = 86.0
+offset_bottom = 294.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Submit"
+
+[node name="UsernameEntry" type="LineEdit" parent="Canvas"]
+offset_left = 500.0
+offset_top = 300.0
+offset_right = 900.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Click to type"
+
+[node name="PasswordEntry" type="LineEdit" parent="Canvas"]
+offset_left = 500.0
+offset_top = 400.0
+offset_right = 900.0
+offset_bottom = 477.0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Click to type"
+
+[connection signal="pressed" from="Canvas/Submit" to="Canvas" method="OnSubmit"]

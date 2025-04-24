@@ -12,7 +12,8 @@ config_version=5
 
 config/name="SoftwareEngineering"
 
-run/main_scene="uid://bhuab3cmr78mp"
+run/main_scene="uid://ciops28td2w5u"
+
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
