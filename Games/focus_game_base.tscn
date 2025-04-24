@@ -35,6 +35,7 @@ scale = Vector2(8.98438, 5.04688)
 texture = ExtResource("1_p30kk")
 
 [node name="TargetArea" type="Area2D" parent="." groups=["Objects"]]
+position = Vector2(8, 280)
 script = ExtResource("3_op6y1")
 
 [node name="Target" type="Sprite2D" parent="TargetArea" groups=["Objects"]]

@@ -11,6 +11,10 @@ func _ready():
 	difficulty = focus_game_base.difficulty
 	speed = difficulty * speed
 	
+	position.x = randi_range(-100, 800)
+	position.y = randi_range(-200, 150)
+	
+	
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \
