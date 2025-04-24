@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3uflcrywngs2"]
+
+[ext_resource type="Script" uid="uid://cqg2h7kkj2kt0" path="res://Testing/script_tester.gd" id="1_vj8dd"]
+
+[node name="ScriptTester" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vj8dd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveRecord" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Save Record"
+
+[connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
