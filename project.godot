@@ -14,6 +14,14 @@ config/name="SoftwareEngineering"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Games/": "blue",
+"res://Menus/": "green",
+"res://Scripts/": "red"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
