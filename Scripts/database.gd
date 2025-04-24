@@ -25,7 +25,30 @@ func retrieve_feedback(employee: int) -> String:
 	return "Good!"
 
 func add_employee(employee: int, password: String) -> bool:
-	return true
+	var path = "res://Data/Employees/" + str(employee) + "/LoginDetails"
+	
+	var directory = DirAccess.open("res://Data/Employees/")
+	if directory:
+		print("Directory res://Data/Employees/ opened.")
+		directory.make_dir(str(employee))
+	else:
+		print("Directory res://Data/Employees/ failed to open.")
+	
+	var data_entry = FileAccess.open(path, FileAccess.WRITE)
+	if data_entry:
+		print("User added at: " + path)
+		var data = {
+			"username": employee,
+			"password": password,
+			"access": 0
+		}
+		
+		data_entry.store_line(JSON.stringify(data))
+		return true
+	else:
+		print("User failed to create at: " + path)
+		print(FileAccess.get_open_error())
+		return false
 
 func remove_employee(employee: int) -> bool:
 	return true
