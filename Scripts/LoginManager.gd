@@ -9,4 +9,5 @@ var Passwords : Array[String] = ["123", "password", "BestEmployee"]
 func OnSubmit() -> void:
 	for i in range(3):
 		if UsernameEntry.text == Usernames[i] && PasswordEntry.text == Passwords[i]:
-			print("Match")
+			if i == 0:
+				get_tree().change_scene_to_file("res://Menus/AdminPage.tscn")
