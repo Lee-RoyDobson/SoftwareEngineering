@@ -77,28 +77,23 @@ func RemoveEmployeeSubmitPressed() -> void:
 		RemoveEmployeeLabel.text = "Employee number must be \n 6 digits"
 		return
 	
-	if accessLevel == 0:
-		if Database.remove_employee(AddNumberInput.text.to_int()):
-			RemoveEmployeeLabel.text = "Successfully Removed \n Employee!"
-		else:
-			RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
-	
-	elif accessLevel == 1:
-		if Database.remove_manager(AddNumberInput.text.to_int()):
-			RemoveEmployeeLabel.text = "Successfully Removed \n Manager!"
-		else:
-			RemoveEmployeeLabel.text = "Failed to Remove \n Manager"
-	
+	if Database.remove_employee(AddNumberInput.text.to_int()):
+		RemoveEmployeeLabel.text = "Successfully Removed \n Employee!"
+		return
 	else:
-		if Database.remove_admin(AddNumberInput.text.to_int()):
-			RemoveEmployeeLabel.text = "Successfully Removed \n Admin!"
-		else:
-			RemoveEmployeeLabel.text = "Failed to Remove \n Admin"
+		RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
 	
+	if Database.remove_manager(AddNumberInput.text.to_int()):
+		RemoveEmployeeLabel.text = "Successfully Removed \n Manager!"
+		return
+	else:
+		RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
 	
-	await get_tree().create_timer(2.0).timeout
-	RemoveEmployeeLabel.text = "Enter Employee's number \n for removal"
-	ResetInputTexts()
+	if Database.remove_admin(AddNumberInput.text.to_int()):
+		RemoveEmployeeLabel.text = "Successfully Removed \n Admin!"
+		return
+	else:
+		RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
 
 func CycleAccessLevel(increment: int) -> void:
 	accessLevel += increment
