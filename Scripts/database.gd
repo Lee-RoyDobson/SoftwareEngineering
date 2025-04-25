@@ -283,9 +283,6 @@ func remove_task(employee: int, task: String) -> bool:
 	
 	return true
 
-func save_score(employee: int, task: int, score: int) -> bool:
-	return true
-
 func add_admin(admin: int, password: String) -> bool:
 	var path = "res://Data/Admins/" + str(admin) + "/LoginDetails"
 	
