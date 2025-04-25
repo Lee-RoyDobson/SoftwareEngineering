@@ -1,8 +1,29 @@
 extends Control
 
+var dict = { "focus": true, "memory": false, "reaction": false }
+
 
 func _ready():
-	$Background/CurrentFatigueScore.text = "Current fatigue score: "
+	$Background/CurrentFatigueScore.text = str(SessionManager.user_number) + " Your current fatigue score is: " + str(SessionManager.score)
+	
+	
+	#dict = Database.get_tasks(SessionManager.user_number)
+
+	for key in dict:
+		if dict[key]:
+			match key:
+				"focus":
+					$Background/FocusTaskButton.disabled = true
+				"memory":
+					$Background/MemoryTaskButton.disabled = true
+				"reaction":
+					$Background/ReactionTaskButton.disabled = true
+
+
+
+
+
+
 
 func _on_memory_task_button_pressed() -> void:
 
@@ -20,5 +41,7 @@ func _on_reaction_task_button_pressed() -> void:
 
 func _on_log_out_button_pressed():
 		
-		
 		get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
+		
+		#reset session manager
+		SessionManager.reset_session()
