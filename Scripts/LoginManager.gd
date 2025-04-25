@@ -3,15 +3,12 @@ extends CanvasLayer
 @onready var UsernameEntry : LineEdit = $UsernameEntry
 @onready var PasswordEntry : LineEdit = $PasswordEntry
 
-var Usernames : Array[String] = ["Admin", "Manager", "Employee"]
-var Passwords : Array[String] = ["123", "password", "BestEmployee"]
-
 var mousePos: int = 0
 var oldText: String = ""
 
 func OnSubmit() -> void:
 	if !UsernameEntry.text.is_valid_int() || UsernameEntry.text.length() != 6: return
-	var Info : Array = Database.get_employee(UsernameEntry.text.to_int()) # ADD PASSWORD INPUT
+	var Info : Array = Database.get_employee(UsernameEntry.text.to_int(), PasswordEntry.text) # ADD PASSWORD INPUT
 	
 	if !Info[0] : return
 	
