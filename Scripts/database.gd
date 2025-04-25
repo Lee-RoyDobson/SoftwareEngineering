@@ -20,7 +20,6 @@ func save_record(employee: int, feedback: String, score: int) -> bool:
 	else:
 		print("Data entry not found at " + path)
 		return false
-		
 
 func retrieve_feedback(employee: int) -> String:
 	return "Good!"
@@ -255,7 +254,6 @@ func remove_task(employee: int, task: String) -> bool:
 func save_score(employee: int, task: int, score: int) -> bool:
 	return true
 
-# TODO: Add admin account creation
 func add_admin(admin: int, password: String) -> bool:
 	var path = "res://Data/Admins/" + str(admin) + "/LoginDetails"
 	
