@@ -34,3 +34,7 @@ func OnIDTextChanged(new_text: String) -> void:
 		UsernameEntry.caret_column = min(mousePos -1, oldText.length())
 	else:
 		oldText = new_text
+
+
+func _on_exit_button_pressed():
+	get_tree().quit()
