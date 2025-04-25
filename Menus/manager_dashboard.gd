@@ -47,3 +47,7 @@ func _ready() -> void:
 		# e.g., row_instance.modulate = Color.green if user["completed"] else Color.red
 		
 		container.add_child(row_instance)
+
+
+func _on_log_out_button_pressed():
+	get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
