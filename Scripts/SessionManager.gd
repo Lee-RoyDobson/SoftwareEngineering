@@ -2,7 +2,7 @@ extends Node
 
 # Session variables with default values.
 var user_level: int = 0
-var score: int = 0
+var score: int = 5
 
 var user_number: int = 123456
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfrfvkl76x0y0"]
+[gd_scene load_steps=5 format=3 uid="uid://bfrfvkl76x0y0"]
 
 [ext_resource type="Script" uid="uid://b5q40lqt3s4uf" path="res://Menus/employee_dashboard.gd" id="1_a8633"]
 
@@ -6,6 +6,9 @@
 font_size = 66
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdwpa"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8633"]
 font_size = 40
 
 [node name="Control" type="Control"]
@@ -73,6 +76,16 @@ offset_top = 320.0
 offset_right = 1240.0
 offset_bottom = 452.0
 label_settings = SubResource("LabelSettings_cdwpa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 712.0
+offset_right = 1528.0
+offset_bottom = 806.0
+label_settings = SubResource("LabelSettings_a8633")
 horizontal_alignment = 1
 vertical_alignment = 1
 
