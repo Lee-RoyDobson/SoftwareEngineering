@@ -75,6 +75,12 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 		return false
 
 func remove_employee(employee: int) -> bool:
+	var directory = DirAccess.open("res://Data/Employees/")
+	if not directory:
+		print("res://Data/Employees/ not found")
+		return false
+	
+	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Employees/" + str(employee)))
 	return true
 
 func add_manager(manager: int, password: String) -> bool:
@@ -243,10 +249,38 @@ func remove_task(employee: int, task: String) -> bool:
 func save_score(employee: int, task: int, score: int) -> bool:
 	return true
 
-
 # TODO: Add admin account creation
-func add_admin() -> bool:
-	return false
+func add_admin(admin: int, password: String) -> bool:
+	var path = "res://Data/Admins/" + str(admin) + "/LoginDetails"
+	
+	var directory = DirAccess.open("res://Data/Admins/")
+	
+	if directory.dir_exists("res://Data/Admins/" + str(admin)):
+		print("User already exists")
+		return false
+	
+	if directory:
+		print("Directory res://Data/Admins/ opened.")
+		directory.make_dir(str(admin))
+	else:
+		print("Directory res://Data/Admins/ failed to open.")
+	
+	var data_entry = FileAccess.open(path, FileAccess.WRITE)
+	if data_entry:
+		print("User added at: " + path)
+		var data = {
+			"username": admin,
+			"password": password,
+			"access": 2
+		}
+		
+		data_entry.store_line(JSON.stringify(data))
+		
+		return true
+	else:
+		print("User failed to create at: " + path)
+		print(FileAccess.get_open_error())
+		return false
 	
 func remove_admin() -> bool:
 	return false

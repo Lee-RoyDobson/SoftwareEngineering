@@ -72,6 +72,14 @@ placeholder_text = "Password"
 layout_mode = 2
 text = "Login"
 
+[node name="AddAdmin" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Add Admin"
+
+[node name="RemoveEmployee" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Remove Employee"
+
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]
 [connection signal="pressed" from="VBoxContainer/RemoveTask" to="." method="_on_remove_task_pressed"]
@@ -80,3 +88,5 @@ text = "Login"
 [connection signal="pressed" from="VBoxContainer/Get Fatigue Score" to="." method="_on_get_fatigue_score_pressed"]
 [connection signal="pressed" from="VBoxContainer/Get Tasks" to="." method="_on_get_tasks_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddAdmin" to="." method="_on_add_admin_pressed"]
+[connection signal="pressed" from="VBoxContainer/RemoveEmployee" to="." method="_on_remove_employee_pressed"]
