@@ -3,14 +3,14 @@ extends Control
 # Preload the reusable UserRow scene. Set this path to your actual scene.
 @export var UserRowScene = preload("res://Menus/ManagerDashboardScenes/UserRow.tscn")
 
-# This could be loaded from a database, file, or a global variable.
-
-
-
 var user_data = Database.get_employees()
 
 func _ready() -> void:
-	# Find the VBoxContainer under the ScrollContainer
+	_populate_container()
+
+
+func _populate_container():
+		# Find the VBoxContainer under the ScrollContainer
 	var container = $Background/ScrollContainer/VBoxContainer
 	for user in user_data:
 		# Create an instance of the user row
@@ -32,6 +32,9 @@ func _ready() -> void:
 		container.add_child(row_instance)
 
 
+
+
 func _on_log_out_button_pressed():
 	get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
 	SessionManager.reset_session()
+	

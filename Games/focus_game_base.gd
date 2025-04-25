@@ -28,15 +28,35 @@ func _ready():
 	
 func _process(delta):
 	var elapsed_time = Time.get_ticks_msec() - start_time
-	$Timer.text = "Time: " + str(elapsed_time/1000.0) + " seconds"
 
 func on_target_found():
 	var end_time = Time.get_ticks_msec()  # Get the current time
 	var completion_time = end_time - start_time  # Calculate elapsed time
+	completion_time = completion_time/1000.0
 	get_tree().paused = true
-	$FinishedLabel.text = str("Completion Time: ", completion_time / 1000.0, " seconds")
+	$FinishedLabel.text = str("Completion Time: ", completion_time, " seconds")
 	$Button.show()
-
+	
+	if completion_time < 1:
+		SessionManager.add_score(-3)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
+	elif completion_time < 2:
+		SessionManager.add_score(-2)
+		Database.save_record(SessionManager.user_number, "Nice feedback", SessionManager.score)
+	elif completion_time < 3:
+		SessionManager.add_score(-1)
+		Database.save_record(SessionManager.user_number, "Bit nice feedback", SessionManager.score)
+	elif completion_time < 4:
+		SessionManager.add_score(1)
+		Database.save_record(SessionManager.user_number, "Tired? feedback", SessionManager.score)
+	elif completion_time < 5:
+		SessionManager.add_score(2)
+		Database.save_record(SessionManager.user_number, "Ayup lad, wake up feedback", SessionManager.score)
+	else:
+		SessionManager.add_score(3)
+		Database.save_record(SessionManager.user_number, "Go home lad feedback", SessionManager.score)
+		
+	
 
 func open_main_menu():
 	get_tree().paused = false
