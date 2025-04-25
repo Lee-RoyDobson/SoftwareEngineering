@@ -42,21 +42,50 @@ func ToggleNodeVisibilty(node:Node, visible:bool):
 func AddEmployeeSubmitPressed() -> void:
 	if !AddNumberInput.text.is_valid_int(): return
 	if AddPasswordInput.text.length() < 3: return
-	if Database.add_employee(AddNumberInput.text.to_int(), AddPasswordInput.text, accessLevel):
-		AddEmployeeLabel.text = "Successfully Added \n Employee!"
-	else:
-		AddEmployeeLabel.text = "Failed to add \n Employee"
 	
+	if accessLevel == 0:
+		if Database.add_employee(AddNumberInput.text.to_int(), AddPasswordInput.text):
+			AddEmployeeLabel.text = "Successfully Added \n Employee!"
+		else:
+			AddEmployeeLabel.text = "Failed to add \n Employee"
+
+	elif accessLevel == 1:
+		if Database.add_manager(AddNumberInput.text.to_int(), AddPasswordInput.text):
+			AddEmployeeLabel.text = "Successfully Added \n Manager!"
+		else:
+			AddEmployeeLabel.text = "Failed to add \n Manager"
+			
+	else:
+		if Database.add_admin(AddNumberInput.text.to_int(), AddPasswordInput.text):
+			AddEmployeeLabel.text = "Successfully Added \n Admin!"
+		else:
+			AddEmployeeLabel.text = "Failed to add \n Admin"
+
 	await get_tree().create_timer(2.0).timeout
 	AddEmployeeLabel.text = "Enter new Employee's Info"
 	ResetInputTexts()
 
 func RemoveEmployeeSubmitPressed() -> void:
 	if !RemoveNumberInput.text.is_valid_int(): return
-	if Database.remove_employee(RemoveNumberInput.text.to_int()):
-		RemoveEmployeeLabel.text = "Successfully Removed \n Employee!"
+	
+	if accessLevel == 0:
+		if Database.remove_employee(AddNumberInput.text.to_int()):
+			AddEmployeeLabel.text = "Successfully Removed \n Employee!"
+		else:
+			AddEmployeeLabel.text = "Failed to Remove \n Employee"
+
+	elif accessLevel == 1:
+		if Database.remove_manager(AddNumberInput.text.to_int()):
+			AddEmployeeLabel.text = "Successfully Remove \n Manager!"
+		else:
+			AddEmployeeLabel.text = "Failed to Remove \n Manager"
+			
 	else:
-		RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
+		if Database.remove_admin(AddNumberInput.text.to_int()):
+			AddEmployeeLabel.text = "Successfully Remove \n Admin!"
+		else:
+			AddEmployeeLabel.text = "Failed to Remove \n Admin"
+
 	
 	await get_tree().create_timer(2.0).timeout
 	RemoveEmployeeLabel.text = "Enter Employee's number \n for removal"
