@@ -11,8 +11,8 @@ func _ready():
 	difficulty = focus_game_base.difficulty
 	speed = difficulty * speed
 	
-	position.x = randi_range(-100, 800)
-	position.y = randi_range(-200, 150)
+	position.x = randi_range(-100, 700)
+	position.y = randi_range(-80, 350)
 	
 	
 
@@ -28,7 +28,7 @@ func on_click():
 func _process(delta):
 	# Move object
 	position += velocity * speed * delta
-
+	
 
 func switch_x(shape):
 	if shape == self:
