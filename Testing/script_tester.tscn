@@ -38,6 +38,55 @@ text = "Add Employee"
 layout_mode = 2
 text = "Remove Task"
 
+[node name="AddManager" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Add Manager"
+
+[node name="Get Employees" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Get Employees"
+
+[node name="Get Fatigue Score" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Get Fatigue Score"
+
+[node name="Get Tasks" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Get Tasks"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="ID" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="Password" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "Password"
+
+[node name="Login" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="AddAdmin" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Add Admin"
+
+[node name="RemoveEmployee" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Remove Employee"
+
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]
 [connection signal="pressed" from="VBoxContainer/RemoveTask" to="." method="_on_remove_task_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddManager" to="." method="_on_add_manager_pressed"]
+[connection signal="pressed" from="VBoxContainer/Get Employees" to="." method="_on_get_employees_pressed"]
+[connection signal="pressed" from="VBoxContainer/Get Fatigue Score" to="." method="_on_get_fatigue_score_pressed"]
+[connection signal="pressed" from="VBoxContainer/Get Tasks" to="." method="_on_get_tasks_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddAdmin" to="." method="_on_add_admin_pressed"]
+[connection signal="pressed" from="VBoxContainer/RemoveEmployee" to="." method="_on_remove_employee_pressed"]
