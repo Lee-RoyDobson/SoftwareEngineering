@@ -99,10 +99,13 @@ func CalculateScore() -> void:
 	
 	if (NumberOfAttempts == 1):
 		SessionManager.add_score(-2)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
 	elif (NumberOfAttempts <= 3):
 		SessionManager.add_score(1)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
 	else:
 		SessionManager.add_score(3)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
 
 func SaveToDatabase() -> void:
 	pass
