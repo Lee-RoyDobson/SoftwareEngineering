@@ -46,8 +46,12 @@ text = "Add Manager"
 layout_mode = 2
 text = "Get Employees"
 
+[node name="Get Fatigue Score" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]
 [connection signal="pressed" from="VBoxContainer/RemoveTask" to="." method="_on_remove_task_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddManager" to="." method="_on_add_manager_pressed"]
 [connection signal="pressed" from="VBoxContainer/Get Employees" to="." method="_on_get_employees_pressed"]
+[connection signal="pressed" from="VBoxContainer/Get Fatigue Score" to="." method="_on_get_fatigue_score_pressed"]

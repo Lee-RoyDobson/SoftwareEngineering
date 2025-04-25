@@ -22,9 +22,6 @@ func save_record(employee: int, feedback: String, score: int) -> bool:
 		return false
 		
 
-func retrieve_difficulty(employee: int) -> int:
-	return 0
-
 func retrieve_feedback(employee: int) -> String:
 	return "Good!"
 
@@ -115,6 +112,10 @@ func add_manager(manager: int, password: String) -> bool:
 func remove_manager(manager: int) -> bool:
 	return true
 
+func get_employee(employee, password) -> Array:
+	#if emplyee and password mataches, return true
+	return [true, [1, 2]]
+
 func get_employees() -> Array:
 	var employee_data = []
 	var directory = DirAccess.open("res://Data/Employees/")
@@ -148,8 +149,13 @@ func get_employees() -> Array:
 func get_tasks(employee: int) -> Array:
 	return []
 
-func get_scores(employee: int) -> int:
-	return 0
+func get_score(employee: int) -> int:
+	var data_entry = FileAccess.open("res://Data/Employees/" + str(employee) + "/Current", FileAccess.READ)
+	var json = JSON.new()
+	json.parse(data_entry.get_line())
+		
+	var score = json.data["score"]
+	return score
 
 func add_task(employee: int, task: String) -> bool:
 	var path = "res://Data/Employees/" + str(employee) + "/Tasks"

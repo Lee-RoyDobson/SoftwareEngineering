@@ -16,3 +16,6 @@ func _on_add_manager_pressed() -> void:
 
 func _on_get_employees_pressed() -> void:
 	print(Database.get_employees())
+
+func _on_get_fatigue_score_pressed() -> void:
+	print(Database.get_score(100597))
