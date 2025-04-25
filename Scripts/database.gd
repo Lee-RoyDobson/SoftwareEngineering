@@ -48,6 +48,15 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 		}
 		
 		data_entry.store_line(JSON.stringify(data))
+		
+		var tasks_data = FileAccess.open("res://Data/Employees/" + str(employee) + "/Tasks", FileAccess.WRITE)
+		
+		data = {
+			"memory": false,
+			"reaction": false,
+			"focus": false
+		}
+		tasks_data.store_line(JSON.stringify(data))
 		return true
 	else:
 		print("User failed to create at: " + path)
@@ -75,7 +84,23 @@ func get_scores(employee: int) -> int:
 func add_task(employee: int, task: int) -> bool:
 	return true
 
-func remove_task(employee: int, task: int) -> bool:
+func remove_task(employee: int, task: String) -> bool:
+	var path = "res://Data/Employees/" + str(employee) + "/Tasks"
+	var data_entry = FileAccess.open(path, FileAccess.READ)
+	
+	var json = JSON.new()
+	
+	json.parse(data_entry.get_line())
+	var data = json.data
+	
+	print(data)
+	data[task] = true
+	
+	print(data)
+	
+	data_entry = FileAccess.open(path, FileAccess.WRITE)
+	data_entry.store_line(JSON.stringify(data))
+	
 	return true
 
 func save_score(employee: int, task: int, score: int) -> bool:

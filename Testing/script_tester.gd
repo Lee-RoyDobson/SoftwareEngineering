@@ -6,3 +6,6 @@ func _on_save_record_pressed() -> void:
 
 func _on_add_employee_pressed() -> void:
 	Database.add_employee(100597, "password123", 0)
+
+func _on_remove_task_pressed() -> void:
+	Database.remove_task(100597, "focus")
