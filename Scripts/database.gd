@@ -32,11 +32,17 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 	var path = "res://Data/Employees/" + str(employee) + "/LoginDetails"
 	
 	var directory = DirAccess.open("res://Data/Employees/")
+	
+	if directory.dir_exists("res://Data/Employees/" + str(employee)):
+		print("User already exists")
+		return false
+	
 	if directory:
 		print("Directory res://Data/Employees/ opened.")
 		directory.make_dir(str(employee))
 	else:
 		print("Directory res://Data/Employees/ failed to open.")
+		return false
 	
 	var data_entry = FileAccess.open(path, FileAccess.WRITE)
 	if data_entry:
@@ -70,6 +76,11 @@ func add_manager(manager: int, password: String) -> bool:
 	var path = "res://Data/Managers/" + str(manager) + "/LoginDetails"
 	
 	var directory = DirAccess.open("res://Data/Managers/")
+	
+	if directory.dir_exists("res://Data/Managers/" + str(manager)):
+		print("User already exists")
+		return false
+	
 	if directory:
 		print("Directory res://Data/Managers/ opened.")
 		directory.make_dir(str(manager))
