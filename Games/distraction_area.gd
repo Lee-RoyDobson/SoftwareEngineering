@@ -13,7 +13,6 @@ var left
 
 
 func _ready():
-	print("starto")
 	speed = focus_game_base.speed
 	difficulty = focus_game_base.difficulty
 	speed = difficulty * speed

@@ -55,4 +55,6 @@ func _on_retry_button_pressed() -> void:
 	get_tree().reload_current_scene()
 
 func _on_continue_button_pressed() -> void:
-	pass # Replace with function body.
+	Database.remove_task(SessionManager.user_number, "reaction")
+	
+	get_tree().change_scene_to_file("res://Menus/EmployeeDashboard.tscn")
