@@ -116,6 +116,12 @@ func add_manager(manager: int, password: String) -> bool:
 		return false
 
 func remove_manager(manager: int) -> bool:
+	var directory = DirAccess.open("res://Data/Managers/")
+	if not directory:
+		print("res://Data/Managers/ not found")
+		return false
+	
+	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Managers/" + str(manager)))
 	return true
 
 func get_employee(employee_id: int, password: String) -> Array:
@@ -282,5 +288,11 @@ func add_admin(admin: int, password: String) -> bool:
 		print(FileAccess.get_open_error())
 		return false
 	
-func remove_admin() -> bool:
-	return false
+func remove_admin(admin: int) -> bool:
+	var directory = DirAccess.open("res://Data/Admins/")
+	if not directory:
+		print("res://Data/Admins/ not found")
+		return false
+	
+	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Admins/" + str(admin)))
+	return true
