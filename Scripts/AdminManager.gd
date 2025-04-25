@@ -85,7 +85,7 @@ func OnNumberTextChanged(new_text: String) -> void:
 		oldText = ""
 		return
 	
-	if !new_text.is_valid_int():
+	if !new_text.is_valid_int() || new_text.length() > 6:
 		AddNumberInput.text = oldText
 		RemoveNumberInput.text = oldText
 		AddNumberInput.caret_column = min(mousePos -1, oldText.length())
