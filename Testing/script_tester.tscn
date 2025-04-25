@@ -48,9 +48,29 @@ text = "Get Employees"
 
 [node name="Get Fatigue Score" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "Get Fatigue Score"
 
 [node name="Get Tasks" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+text = "Get Tasks"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="ID" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="Password" type="TextEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "Password"
+
+[node name="Login" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Login"
 
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]
@@ -59,3 +79,4 @@ layout_mode = 2
 [connection signal="pressed" from="VBoxContainer/Get Employees" to="." method="_on_get_employees_pressed"]
 [connection signal="pressed" from="VBoxContainer/Get Fatigue Score" to="." method="_on_get_fatigue_score_pressed"]
 [connection signal="pressed" from="VBoxContainer/Get Tasks" to="." method="_on_get_tasks_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Login" to="." method="_on_login_pressed"]

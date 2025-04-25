@@ -112,9 +112,50 @@ func add_manager(manager: int, password: String) -> bool:
 func remove_manager(manager: int) -> bool:
 	return true
 
-func get_employee(employee, password) -> Array:
-	#if emplyee and password mataches, return true
-	return [true, [1, 2]]
+func get_employee(employee_id: int, password: String) -> Array:
+	var logged_in: bool = false
+	var access_level: int = 0
+	var employee_dir = DirAccess.open("res://Data/Employees/")
+	for employee in employee_dir.get_directories():
+		if employee == str(employee_id):
+			var login_data = FileAccess.open("res://Data/Employees/" + employee + "/LoginDetails", FileAccess.READ)
+			var json = JSON.new()
+			json.parse(login_data.get_line())
+			
+			var password_data = json.data
+			
+			if password_data["password"] == password:
+				logged_in = true
+	
+	if not logged_in:
+		var manager_dir = DirAccess.open("res://Data/Managers/")
+		for manager in manager_dir.get_directories():
+			if manager == str(employee_id):
+				var login_data = FileAccess.open("res://Data/Managers/" + manager + "/LoginDetails", FileAccess.READ)
+				var json = JSON.new()
+				json.parse(login_data.get_line())
+				
+				var password_data = json.data
+				
+				if password_data["password"] == password:
+					logged_in = true
+					access_level = 1
+	
+	if not logged_in:
+		var admin_dir = DirAccess.open("res://Data/Admins/")
+		for admin in admin_dir.get_directories():
+			if admin == str(employee_id):
+				var login_data = FileAccess.open("res://Data/Admins/" + admin + "/LoginDetails", FileAccess.READ)
+				var json = JSON.new()
+				json.parse(login_data.get_line())
+				
+				var password_data = json.data
+				
+				if password_data["password"] == password:
+					logged_in = true
+					access_level = 2
+	
+	return [logged_in, access_level]
 
 func get_employees() -> Array:
 	var employee_data = []
@@ -130,7 +171,6 @@ func get_employees() -> Array:
 		
 		# Check tasks for any not completed
 		for task in tasks:
-			print(task)
 			if not tasks[task]:
 				tasks_completed = false
 		
@@ -202,3 +242,11 @@ func remove_task(employee: int, task: String) -> bool:
 
 func save_score(employee: int, task: int, score: int) -> bool:
 	return true
+
+
+# TODO: Add admin account creation
+func add_admin() -> bool:
+	return false
+	
+func remove_admin() -> bool:
+	return false

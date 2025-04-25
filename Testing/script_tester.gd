@@ -18,8 +18,12 @@ func _on_get_employees_pressed() -> void:
 	print(Database.get_employees())
 
 func _on_get_fatigue_score_pressed() -> void:
-	print(Database.get_score(100597))
+	print(Database.get_score(123456))
 
 
 func _on_get_tasks_pressed() -> void:
-	print(Database.get_tasks(100597))
+	print(Database.get_tasks(123456))
+
+
+func _on_login_pressed() -> void:
+	print(Database.get_employee(int($VBoxContainer/HBoxContainer/ID.text), $VBoxContainer/HBoxContainer/Password.text))
