@@ -1,9 +1,9 @@
 extends Node
 
 # Session variables with default values.
-var user_level: int = 1
+var user_level: int = 0
 var score: int = 0
-var user_number: int = 0
+var user_number: int = 100597
 var difficulty: int = 1
 
 # Optional: Functions to update session variables.

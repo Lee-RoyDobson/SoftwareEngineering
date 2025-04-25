@@ -1,13 +1,14 @@
 extends Control
 
-var dict = { "focus": true, "memory": false, "reaction": false }
+var dict
+
 
 
 func _ready():
 	$Background/CurrentFatigueScore.text = str(SessionManager.user_number) + " Your current fatigue score is: " + str(SessionManager.score)
 	
-	
-	#dict = Database.get_tasks(SessionManager.user_number)
+
+	dict = Database.get_tasks(SessionManager.user_number)
 
 	for key in dict:
 		if dict[key]:

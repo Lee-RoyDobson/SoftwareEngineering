@@ -145,6 +145,24 @@ offset_bottom = 633.0
 theme_override_font_sizes/font_size = 50
 text = "Submit"
 
+[node name="MainMenuButton" type="Button" parent="Canvas"]
+offset_left = 1624.0
+offset_top = 880.0
+offset_right = 1824.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Main Menu"
+
+[node name="RetryButton" type="Button" parent="Canvas"]
+offset_left = 1624.0
+offset_top = 744.0
+offset_right = 1824.0
+offset_bottom = 811.0
+theme_override_font_sizes/font_size = 30
+disabled = true
+text = "Retry"
+
 [connection signal="pressed" from="Canvas/Buttons/TextureButton" to="Canvas/Buttons" method="OnButtonClicked" binds= [0]]
 [connection signal="pressed" from="Canvas/Buttons/TextureButton2" to="Canvas/Buttons" method="OnButtonClicked" binds= [1]]
 [connection signal="pressed" from="Canvas/Buttons/TextureButton3" to="Canvas/Buttons" method="OnButtonClicked" binds= [2]]
@@ -152,3 +170,5 @@ text = "Submit"
 [connection signal="pressed" from="Canvas/Buttons/TextureButton5" to="Canvas/Buttons" method="OnButtonClicked" binds= [4]]
 [connection signal="pressed" from="Canvas/Buttons/TextureButton6" to="Canvas/Buttons" method="OnButtonClicked" binds= [5]]
 [connection signal="pressed" from="Canvas/SubmitButton" to="Canvas/Buttons" method="OnSubmit"]
+[connection signal="pressed" from="Canvas/MainMenuButton" to="Canvas/Buttons" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Canvas/RetryButton" to="Canvas/Buttons" method="_on_retry_button_pressed"]
