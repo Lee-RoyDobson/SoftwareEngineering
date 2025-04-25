@@ -14,6 +14,8 @@ func OnSubmit() -> void:
 	
 	SessionManager.set_user_number(UsernameEntry.text.to_int())
 	if Info[1] == 0:
+		SessionManager.set_score(Database.get_score(UsernameEntry.text.to_int()))
+		SessionManager.calculate_difficulty()
 		get_tree().change_scene_to_file("res://Menus/EmployeeDashboard.tscn")
 	elif Info[1] == 1:
 		get_tree().change_scene_to_file("res://Menus/ManagerDashboard.tscn")

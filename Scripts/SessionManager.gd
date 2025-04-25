@@ -13,7 +13,7 @@ func set_user_level(level: int) -> void:
 	user_level = level
 
 func add_score(amount: int) -> void:
-	score += clamp(amount,1,10)
+	score = clamp(score + amount,1,10)
 	calculate_difficulty()
 
 func set_score(new_score: int) -> void:
@@ -31,8 +31,8 @@ func reset_session() -> void:
 
 func calculate_difficulty():
 	if score >= 0 and score <= 3:
-		difficulty = 1
+		difficulty = 3
 	elif score > 3 and score <= 7:
 		difficulty = 2
 	elif score > 7 and score <= 10:
-		difficulty = 3
+		difficulty = 1

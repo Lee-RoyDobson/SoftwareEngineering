@@ -47,13 +47,6 @@ texture = SubResource("PlaceholderTexture2D_p30kk")
 position = Vector2(202.419, 124)
 shape = SubResource("RectangleShape2D_o2n6c")
 
-[node name="Timer" type="Label" parent="."]
-z_index = 5
-offset_left = 907.0
-offset_top = 36.0
-offset_right = 1089.0
-offset_bottom = 62.0
-
 [node name="Distraction1Area" type="Area2D" parent="." groups=["Objects"]]
 script = ExtResource("4_a676r")
 
