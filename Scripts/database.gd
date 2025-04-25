@@ -74,9 +74,9 @@ func add_employee(employee: int, password: String) -> bool:
 		return false
 
 func remove_employee(employee: int) -> bool:
-	var directory = DirAccess.open("res://Data/Employees/")
+	var directory = DirAccess.open("res://Data/Employees/" + str(employee))
 	if not directory:
-		print("res://Data/Employees/ not found")
+		print("res://Data/Employees/" + str(employee)+ " not found")
 		return false
 	
 	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Employees/" + str(employee)))
@@ -115,9 +115,9 @@ func add_manager(manager: int, password: String) -> bool:
 		return false
 
 func remove_manager(manager: int) -> bool:
-	var directory = DirAccess.open("res://Data/Managers/")
+	var directory = DirAccess.open("res://Data/Managers/" + str(manager))
 	if not directory:
-		print("res://Data/Managers/ not found")
+		print("res://Data/Managers/" +str(manager)+ " not found")
 		return false
 	
 	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Managers/" + str(manager)))
@@ -287,9 +287,9 @@ func add_admin(admin: int, password: String) -> bool:
 		return false
 	
 func remove_admin(admin: int) -> bool:
-	var directory = DirAccess.open("res://Data/Admins/")
+	var directory = DirAccess.open("res://Data/Admins/" + str(admin))
 	if not directory:
-		print("res://Data/Admins/ not found")
+		print("res://Data/Admins/"+ str(admin) + " not found")
 		return false
 	
 	OS.move_to_trash(ProjectSettings.globalize_path("res://Data/Admins/" + str(admin)))

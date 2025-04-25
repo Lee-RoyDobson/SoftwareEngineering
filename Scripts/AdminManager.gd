@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var accessText: Label = $AddEmployeePage/AccessLevel
 @onready var AddEmployeeLabel: Label = $AddEmployeePage/Label
 @onready var RemoveEmployeeLabel: Label = $RemoveEmployeePage/Label
+
 # 0 employee, 1 Manager, 2 Admin 
 var accessLevel: int = 2
 var oldText: String = ""
@@ -18,11 +19,9 @@ func AddEmployeePressed() -> void:
 	ToggleNodeVisibilty(MainPage, false)
 	ToggleNodeVisibilty(AddEmployeePage, true)
 
-
 func RemoveEmployeePressed() -> void:
 	ToggleNodeVisibilty(MainPage, false)
 	ToggleNodeVisibilty(RemoveEmployeePage, true)
-
 
 func LogoutPressed() -> void:
 	get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
@@ -38,23 +37,29 @@ func ToggleNodeVisibilty(node:Node, visible:bool):
 		if child.has_method("set_visible"):
 			child.visible = visible
 
-
 func AddEmployeeSubmitPressed() -> void:
 	if !AddNumberInput.text.is_valid_int(): return
-	if AddPasswordInput.text.length() < 3: return
+	
+	if AddNumberInput.text.length() != 6:
+		AddEmployeeLabel.text = "Employee number must be \n 6 digits"
+		return
+	
+	if AddPasswordInput.text.length() < 3:
+		AddEmployeeLabel.text = "Password is too Short"
+		return
 	
 	if accessLevel == 0:
 		if Database.add_employee(AddNumberInput.text.to_int(), AddPasswordInput.text):
 			AddEmployeeLabel.text = "Successfully Added \n Employee!"
 		else:
 			AddEmployeeLabel.text = "Failed to add \n Employee"
-
+	
 	elif accessLevel == 1:
 		if Database.add_manager(AddNumberInput.text.to_int(), AddPasswordInput.text):
 			AddEmployeeLabel.text = "Successfully Added \n Manager!"
 		else:
 			AddEmployeeLabel.text = "Failed to add \n Manager"
-			
+
 	else:
 		if Database.add_admin(AddNumberInput.text.to_int(), AddPasswordInput.text):
 			AddEmployeeLabel.text = "Successfully Added \n Admin!"
@@ -68,24 +73,28 @@ func AddEmployeeSubmitPressed() -> void:
 func RemoveEmployeeSubmitPressed() -> void:
 	if !RemoveNumberInput.text.is_valid_int(): return
 	
+	if RemoveNumberInput.text.length() != 6:
+		RemoveEmployeeLabel.text = "Employee number must be \n 6 digits"
+		return
+	
 	if accessLevel == 0:
 		if Database.remove_employee(AddNumberInput.text.to_int()):
-			AddEmployeeLabel.text = "Successfully Removed \n Employee!"
+			RemoveEmployeeLabel.text = "Successfully Removed \n Employee!"
 		else:
-			AddEmployeeLabel.text = "Failed to Remove \n Employee"
-
+			RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
+	
 	elif accessLevel == 1:
 		if Database.remove_manager(AddNumberInput.text.to_int()):
-			AddEmployeeLabel.text = "Successfully Remove \n Manager!"
+			RemoveEmployeeLabel.text = "Successfully Removed \n Manager!"
 		else:
-			AddEmployeeLabel.text = "Failed to Remove \n Manager"
-			
+			RemoveEmployeeLabel.text = "Failed to Remove \n Manager"
+	
 	else:
 		if Database.remove_admin(AddNumberInput.text.to_int()):
-			AddEmployeeLabel.text = "Successfully Remove \n Admin!"
+			RemoveEmployeeLabel.text = "Successfully Removed \n Admin!"
 		else:
-			AddEmployeeLabel.text = "Failed to Remove \n Admin"
-
+			RemoveEmployeeLabel.text = "Failed to Remove \n Admin"
+	
 	
 	await get_tree().create_timer(2.0).timeout
 	RemoveEmployeeLabel.text = "Enter Employee's number \n for removal"
