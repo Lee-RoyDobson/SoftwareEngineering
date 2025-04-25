@@ -63,6 +63,8 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 			"focus": false
 		}
 		tasks_data.store_line(JSON.stringify(data))
+		
+		#TODO: Add Current file
 		return true
 	else:
 		print("User failed to create at: " + path)
@@ -107,8 +109,35 @@ func add_manager(manager: int, password: String) -> bool:
 func remove_manager(manager: int) -> bool:
 	return true
 
-func get_employee(employee: int) -> Array:
-	return []
+func get_employees() -> Array:
+	var employee_data = []
+	var directory = DirAccess.open("res://Data/Employees/")
+	for employee: String in directory.get_directories():
+		var tasks_completed = true
+		
+		var data_entry = FileAccess.open("res://Data/Employees/" + employee + "/Tasks", FileAccess.READ)
+		var json = JSON.new()
+		json.parse(data_entry.get_line())
+		
+		var tasks = json.data
+		
+		# Check tasks for any not completed
+		for task in tasks:
+			print(task)
+			if not tasks[task]:
+				tasks_completed = false
+		
+		data_entry = FileAccess.open("res://Data/Employees/" + employee + "/Current", FileAccess.READ)
+		json.parse(data_entry.get_line())
+		
+		var score = json.data["score"]
+		
+		employee_data.append({
+			"username": employee,
+			"score": score,
+			"completed": tasks_completed
+		})
+	return employee_data
 
 func get_tasks(employee: int) -> Array:
 	return []

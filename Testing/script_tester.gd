@@ -12,3 +12,7 @@ func _on_remove_task_pressed() -> void:
 
 func _on_add_manager_pressed() -> void:
 	Database.add_manager(999999, "epicPassword")
+
+
+func _on_get_employees_pressed() -> void:
+	print(Database.get_employees())
