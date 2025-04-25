@@ -19,6 +19,6 @@ func _on_reaction_task_button_pressed() -> void:
 
 
 func _on_log_out_button_pressed():
-		print("Logging out...")
+		
 		
 		get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
