@@ -34,4 +34,4 @@ func on_target_found():
 
 func open_main_menu():
 	get_tree().paused = false
-	print("openmainmenu")
+	get_tree().change_scene_to_file("res://Menus/EmployeeDashboard.tscn")

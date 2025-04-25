@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bm1agc0ok6h2x" path="res://Textures/Grapes.jpg" id="4_6m4d1"]
 [ext_resource type="Texture2D" uid="uid://brua8kpb8a7h7" path="res://Textures/Orange.jpg" id="5_p3426"]
 [ext_resource type="Texture2D" uid="uid://dpbaql76vsqyx" path="res://Textures/WaterMelon.jpg" id="6_prp0l"]
-[ext_resource type="Script" uid="uid://cl3d374ixbv24" path="res://Games/buttons.gd" id="7_ludjp"]
+[ext_resource type="Script" uid="uid://cl3d374ixbv24" path="res://Scripts/MemoryGame.gd" id="7_ludjp"]
 
 [node name="Node2D" type="Node2D"]
 
