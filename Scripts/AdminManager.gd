@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var RemoveNumberInput : LineEdit = $RemoveEmployeePage/NumberInput
 @onready var AddPasswordInput : LineEdit = $AddEmployeePage/PasswordInput
 @onready var accessText: Label = $AddEmployeePage/AccessLevel
+@onready var AddEmployeeLabel: Label = $AddEmployeePage/Label
+@onready var RemoveEmployeeLabel: Label = $RemoveEmployeePage/Label
 # 0 employee, 1 Manager, 2 Admin 
 var accessLevel: int = 2
 var oldText: String = ""
@@ -38,9 +40,26 @@ func ToggleNodeVisibilty(node:Node, visible:bool):
 
 
 func AddEmployeeSubmitPressed() -> void:
+	if !AddNumberInput.text.is_valid_int(): return
+	if AddPasswordInput.text.length() < 3: return
+	if Database.add_employee(AddNumberInput.text.to_int(), AddPasswordInput.text, accessLevel):
+		AddEmployeeLabel.text = "Successfully Added \n Employee!"
+	else:
+		AddEmployeeLabel.text = "Failed to add \n Employee"
+	
+	await get_tree().create_timer(2.0).timeout
+	AddEmployeeLabel.text = "Enter new Employee's Info"
 	ResetInputTexts()
 
 func RemoveEmployeeSubmitPressed() -> void:
+	if !RemoveNumberInput.text.is_valid_int(): return
+	if Database.remove_employee(RemoveNumberInput.text.to_int()):
+		RemoveEmployeeLabel.text = "Successfully Removed \n Employee!"
+	else:
+		RemoveEmployeeLabel.text = "Failed to Remove \n Employee"
+	
+	await get_tree().create_timer(2.0).timeout
+	RemoveEmployeeLabel.text = "Enter Employee's number \n for removal"
 	ResetInputTexts()
 
 func CycleAccessLevel(increment: int) -> void:
