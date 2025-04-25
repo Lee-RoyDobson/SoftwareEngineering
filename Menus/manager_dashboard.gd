@@ -4,27 +4,10 @@ extends Control
 @export var UserRowScene = preload("res://Menus/ManagerDashboardScenes/UserRow.tscn")
 
 # This could be loaded from a database, file, or a global variable.
-var user_data = [
-  {"username": "100001", "score": 320, "completed": true},
-  {"username": "100002", "score": 150, "completed": false},
-  {"username": "100003", "score": 275, "completed": true},
-  {"username": "100004", "score": 320, "completed": true},
-  {"username": "100005", "score": 150, "completed": false},
-  {"username": "100006", "score": 275, "completed": true},
-  {"username": "100007", "score": 320, "completed": true},
-  {"username": "100008", "score": 150, "completed": false},
-  {"username": "100009", "score": 275, "completed": true},
-  {"username": "100010", "score": 320, "completed": true},
-  {"username": "100011", "score": 150, "completed": false},
-  {"username": "100012", "score": 275, "completed": true},
-  {"username": "100013", "score": 320, "completed": true},
-  {"username": "100014", "score": 150, "completed": false},
-  {"username": "100015", "score": 275, "completed": true},
-  {"username": "100016", "score": 320, "completed": true},
-  {"username": "100017", "score": 150, "completed": false},
-  {"username": "100018", "score": 275, "completed": true}
-	# Add many more users as needed...
-]
+
+
+
+var user_data = Database.get_employees()
 
 func _ready() -> void:
 	# Find the VBoxContainer under the ScrollContainer

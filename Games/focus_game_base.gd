@@ -1,9 +1,16 @@
 extends Node2D
 var start_time = 0  #start time
-var difficulty = SessionManager.difficulty
+var difficulty
 var speed = 300
 var spawned_scene = preload("res://Games/FocusScenes/distraction_1_area.tscn")
-var amount = 5 * difficulty
+var amount = 5
+
+func _init():
+	SessionManager.calculate_difficulty()
+	difficulty = SessionManager.difficulty
+	amount = 5 * difficulty
+
+
 
 func _ready():
 	# Record the start time when the game starts
