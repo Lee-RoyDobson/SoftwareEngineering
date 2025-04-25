@@ -19,3 +19,7 @@ func _on_get_employees_pressed() -> void:
 
 func _on_get_fatigue_score_pressed() -> void:
 	print(Database.get_score(100597))
+
+
+func _on_get_tasks_pressed() -> void:
+	print(Database.get_tasks(100597))

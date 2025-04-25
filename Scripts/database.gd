@@ -146,8 +146,13 @@ func get_employees() -> Array:
 		})
 	return employee_data
 
-func get_tasks(employee: int) -> Array:
-	return []
+func get_tasks(employee: int) -> Dictionary:
+	var data_entry = FileAccess.open("res://Data/Employees/" + str(employee) + "/Tasks", FileAccess.READ)
+	var json = JSON.new()
+	json.parse(data_entry.get_line())
+	
+	var tasks = json.data
+	return tasks
 
 func get_score(employee: int) -> int:
 	var data_entry = FileAccess.open("res://Data/Employees/" + str(employee) + "/Current", FileAccess.READ)
