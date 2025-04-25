@@ -103,5 +103,14 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 placeholder_text = "Click to type"
 
+[node name="ExitButton" type="Button" parent="Canvas"]
+offset_left = 1496.0
+offset_top = 920.0
+offset_right = 1730.0
+offset_bottom = 1021.0
+theme_override_font_sizes/font_size = 40
+text = "EXIT"
+
 [connection signal="pressed" from="Canvas/Submit" to="Canvas" method="OnSubmit"]
 [connection signal="text_changed" from="Canvas/UsernameEntry" to="Canvas" method="OnIDTextChanged"]
+[connection signal="pressed" from="Canvas/ExitButton" to="Canvas" method="_on_exit_button_pressed"]
