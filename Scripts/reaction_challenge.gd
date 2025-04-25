@@ -29,6 +29,26 @@ func _on_button_pressed() -> void:
 	time_label.text = str(time * 1000).pad_decimals(2) + "ms"
 	button.disabled = true
 	continue_button.visible = true
+	
+	var completion_time = time * 1000
+	if completion_time < 300:
+		SessionManager.add_score(-3)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
+	elif completion_time < 350:
+		SessionManager.add_score(-2)
+		Database.save_record(SessionManager.user_number, "Nice feedback", SessionManager.score)
+	elif completion_time < 450:
+		SessionManager.add_score(-1)
+		Database.save_record(SessionManager.user_number, "Bit nice feedback", SessionManager.score)
+	elif completion_time < 550:
+		SessionManager.add_score(1)
+		Database.save_record(SessionManager.user_number, "Tired? feedback", SessionManager.score)
+	elif completion_time < 650:
+		SessionManager.add_score(2)
+		Database.save_record(SessionManager.user_number, "Ayup lad, wake up feedback", SessionManager.score)
+	else:
+		SessionManager.add_score(3)
+		Database.save_record(SessionManager.user_number, "Go home lad feedback", SessionManager.score)
 
 func _on_timer_timeout() -> void:
 	is_started = true
