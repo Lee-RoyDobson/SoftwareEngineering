@@ -105,7 +105,23 @@ func get_tasks(employee: int) -> Array:
 func get_scores(employee: int) -> int:
 	return 0
 
-func add_task(employee: int, task: int) -> bool:
+func add_task(employee: int, task: String) -> bool:
+	var path = "res://Data/Employees/" + str(employee) + "/Tasks"
+	var data_entry = FileAccess.open(path, FileAccess.READ)
+	
+	var json = JSON.new()
+	
+	json.parse(data_entry.get_line())
+	var data = json.data
+	
+	print(data)
+	data[task] = false
+	
+	print(data)
+	
+	data_entry = FileAccess.open(path, FileAccess.WRITE)
+	data_entry.store_line(JSON.stringify(data))
+	
 	return true
 
 func remove_task(employee: int, task: String) -> bool:
