@@ -24,7 +24,7 @@ func save_record(employee: int, feedback: String, score: int) -> bool:
 func retrieve_feedback(employee: int) -> String:
 	return "Good!"
 
-func add_employee(employee: int, password: String, access: int) -> bool:
+func add_employee(employee: int, password: String) -> bool:
 	var path = "res://Data/Employees/" + str(employee) + "/LoginDetails"
 	
 	var directory = DirAccess.open("res://Data/Employees/")
@@ -46,7 +46,7 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 		var data = {
 			"username": employee,
 			"password": password,
-			"access": access
+			"access": 0
 		}
 		
 		data_entry.store_line(JSON.stringify(data))

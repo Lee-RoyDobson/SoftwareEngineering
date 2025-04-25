@@ -90,8 +90,21 @@ func StartTask() -> void:
 func CalculateScore() -> void:
 	if (ImageIndices == TargetIndices):
 		TextLabel.text = "Its a Match!"
+		$"../MainMenuButton".disabled = false
 	else:
 		TextLabel.text = "Failed!"
+		$"../RetryButton".disabled = false
 
 func SaveToDatabase() -> void:
 	pass
+
+
+func _on_main_menu_button_pressed():
+	$"../MainMenuButton".disabled = true
+	Database.remove_task(SessionManager.user_number, "memory")
+	get_tree().change_scene_to_file("res://Menus/EmployeeDashboard.tscn")
+
+
+func _on_retry_button_pressed():
+	$"../RetryButton".disabled = true
+	StartTask()
