@@ -15,12 +15,20 @@ run/main_scene="uid://ciops28td2w5u"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+
+[autoload]
+
+Database="*res://Scripts/database.gd"
+
+
 [file_customization]
 
 folder_colors={
+"res://Data/": "purple",
 "res://Games/": "blue",
 "res://Menus/": "green",
-"res://Scripts/": "red"
+"res://Scripts/": "red",
+"res://Testing/": "yellow"
 }
 
 [rendering]
