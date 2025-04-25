@@ -15,18 +15,14 @@ run/main_scene="uid://cyh144uwduro2"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Database="*res://Scripts/database.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-
-
-[autoload]
-
-Database="*res://Scripts/database.gd"
-
-
 
 [file_customization]
 
