@@ -28,6 +28,5 @@ func _on_login_pressed() -> void:
 func _on_add_admin_pressed() -> void:
 	Database.add_admin(987654, "admin")
 
-
 func _on_remove_employee_pressed() -> void:
 	Database.remove_employee(100597)

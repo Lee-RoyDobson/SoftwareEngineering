@@ -27,10 +27,26 @@ func retrieve_feedback(employee: int) -> String:
 func add_employee(employee: int, password: String) -> bool:
 	var path = "res://Data/Employees/" + str(employee) + "/LoginDetails"
 	
+	
+	# Check if user already exists in Admins
+	var other_dirs = DirAccess.open("res://Data/Admins/")
+	
+	if other_dirs.dir_exists("res://Data/Admins/" + str(employee)):
+		print("User already exists in Admins")
+		return false
+	
+	# Check if user already exists in Managers
+	other_dirs = DirAccess.open("res://Data/Managers")
+	
+	if other_dirs.dir_exists("res://Data/Managers/" + str(employee)):
+		print("User already exists in Managers")
+		return false
+	
+	# Check if user already exists in Employees
 	var directory = DirAccess.open("res://Data/Employees/")
 	
 	if directory.dir_exists("res://Data/Employees/" + str(employee)):
-		print("User already exists")
+		print("User already exists in Employees")
 		return false
 	
 	if directory:
@@ -84,6 +100,22 @@ func remove_employee(employee: int) -> bool:
 
 func add_manager(manager: int, password: String) -> bool:
 	var path = "res://Data/Managers/" + str(manager) + "/LoginDetails"
+	
+	
+	# Check if user already exists in Admins
+	var other_dirs = DirAccess.open("res://Data/Admins/")
+	
+	if other_dirs.dir_exists("res://Data/Admins/" + str(manager)):
+		print("User already exists in Admins")
+		return false
+	
+	# Check if user already exists in Managers
+	other_dirs = DirAccess.open("res://Data/Employees")
+	
+	if other_dirs.dir_exists("res://Data/Employees/" + str(manager)):
+		print("User already exists in Employees")
+		return false
+	
 	
 	var directory = DirAccess.open("res://Data/Managers/")
 	
@@ -256,6 +288,21 @@ func save_score(employee: int, task: int, score: int) -> bool:
 
 func add_admin(admin: int, password: String) -> bool:
 	var path = "res://Data/Admins/" + str(admin) + "/LoginDetails"
+	
+	# Check if user already exists in Admins
+	var other_dirs = DirAccess.open("res://Data/Managers/")
+	
+	if other_dirs.dir_exists("res://Data/Managers/" + str(admin)):
+		print("User already exists in Managers")
+		return false
+	
+	# Check if user already exists in Managers
+	other_dirs = DirAccess.open("res://Data/Employees")
+	
+	if other_dirs.dir_exists("res://Data/Employees/" + str(admin)):
+		print("User already exists in Employees")
+		return false
+	
 	
 	var directory = DirAccess.open("res://Data/Admins/")
 	
