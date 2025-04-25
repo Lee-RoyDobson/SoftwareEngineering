@@ -1,6 +1,6 @@
 extends Node2D
 var start_time = 0  #start time
-var difficulty = 1
+var difficulty = SessionManager.difficulty
 var speed = 300
 var spawned_scene = preload("res://Games/FocusScenes/distraction_1_area.tscn")
 var amount = 5 * difficulty
@@ -30,8 +30,10 @@ func on_target_found():
 	$FinishedLabel.text = str("Completion Time: ", completion_time / 1000.0, " seconds")
 	$Button.show()
 
-	#HERE BE THE END OF THIS GAME, ADD LATER?
 
 func open_main_menu():
 	get_tree().paused = false
+	
+	Database.remove_task(SessionManager.user_number, "focus")
+	
 	get_tree().change_scene_to_file("res://Menus/EmployeeDashboard.tscn")
