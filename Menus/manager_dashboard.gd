@@ -51,3 +51,4 @@ func _ready() -> void:
 
 func _on_log_out_button_pressed():
 	get_tree().change_scene_to_file("res://Menus/LoginScreen.tscn")
+	SessionManager.reset_session()
