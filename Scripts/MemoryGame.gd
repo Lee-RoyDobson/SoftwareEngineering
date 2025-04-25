@@ -1,4 +1,4 @@
-extends GridContainer
+class_name MemoryTask extends TaskParent
 @onready var texture_rects : Array[TextureRect]= [
 	$"../Images/TextureRect",
 	$"../Images/TextureRect2",
@@ -31,18 +31,7 @@ var GameIsActive : bool = false
 var Difficulty : int = 2
 
 func _ready() -> void:
-	if Difficulty == 0:
-		Countdown = 15.0
-		LoopLimit = 3
-	elif Difficulty == 1:
-		Countdown = 10.0
-		LoopLimit = 4
-	else:
-		Countdown = 5.0
-		LoopLimit = 6
-	
-	Submit.visible = false
-	RandomisStartingImages()
+	StartTask()
 
 func _process(delta: float) -> void:
 	if (Countdown > 0.0):
@@ -82,7 +71,27 @@ func OnButtonClicked(index: int) -> void:
 func OnSubmit() -> void:
 	Submit.visible = false
 	GameIsActive = false
+	CalculateScore()
+
+func StartTask() -> void:
+	if Difficulty == 0:
+		Countdown = 15.0
+		LoopLimit = 3
+	elif Difficulty == 1:
+		Countdown = 10.0
+		LoopLimit = 4
+	else:
+		Countdown = 5.0
+		LoopLimit = 6
+	
+	Submit.visible = false
+	RandomisStartingImages()
+
+func CalculateScore() -> void:
 	if (ImageIndices == TargetIndices):
 		TextLabel.text = "Its a Match!"
 	else:
 		TextLabel.text = "Failed!"
+
+func SaveToDatabase() -> void:
+	pass
