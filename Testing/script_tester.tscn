@@ -38,6 +38,11 @@ text = "Add Employee"
 layout_mode = 2
 text = "Remove Task"
 
+[node name="AddManager" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Add Manager"
+
 [connection signal="pressed" from="VBoxContainer/SaveRecord" to="." method="_on_save_record_pressed"]
 [connection signal="pressed" from="VBoxContainer/AddEmployee" to="." method="_on_add_employee_pressed"]
 [connection signal="pressed" from="VBoxContainer/RemoveTask" to="." method="_on_remove_task_pressed"]
+[connection signal="pressed" from="VBoxContainer/AddManager" to="." method="_on_add_manager_pressed"]

@@ -66,8 +66,32 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 func remove_employee(employee: int) -> bool:
 	return true
 
-func add_manager(manager: int) -> bool:
-	return true
+func add_manager(manager: int, password: String) -> bool:
+	var path = "res://Data/Managers/" + str(manager) + "/LoginDetails"
+	
+	var directory = DirAccess.open("res://Data/Managers/")
+	if directory:
+		print("Directory res://Data/Managers/ opened.")
+		directory.make_dir(str(manager))
+	else:
+		print("Directory res://Data/Managers/ failed to open.")
+	
+	var data_entry = FileAccess.open(path, FileAccess.WRITE)
+	if data_entry:
+		print("User added at: " + path)
+		var data = {
+			"username": manager,
+			"password": password,
+			"access": 1
+		}
+		
+		data_entry.store_line(JSON.stringify(data))
+		
+		return true
+	else:
+		print("User failed to create at: " + path)
+		print(FileAccess.get_open_error())
+		return false
 
 func remove_manager(manager: int) -> bool:
 	return true
