@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfrfvkl76x0y0"]
+
+[ext_resource type="Script" uid="uid://b5q40lqt3s4uf" path="res://Menus/employee_dashboard.gd" id="1_a8633"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_js8s5"]
+font_size = 66
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdwpa"]
+font_size = 40
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8633")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 128.0
+offset_right = 1302.0
+offset_bottom = 313.0
+text = "Employee Dashboard
+"
+label_settings = SubResource("LabelSettings_js8s5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MemoryTaskButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 576.0
+offset_right = 584.0
+offset_bottom = 676.0
+text = "Complete Memory Task"
+
+[node name="FocusTaskButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 576.0
+offset_right = 1064.0
+offset_bottom = 676.0
+text = "Complete Focus Task"
+
+[node name="ReactionTaskButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 1344.0
+offset_top = 576.0
+offset_right = 1544.0
+offset_bottom = 676.0
+text = "Complete Reaction Task"
+
+[node name="LogOutButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 832.0
+offset_right = 1064.0
+offset_bottom = 932.0
+text = "Log Out"
+
+[node name="CurrentFatigueScore" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 320.0
+offset_right = 1240.0
+offset_bottom = 452.0
+label_settings = SubResource("LabelSettings_cdwpa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Background/MemoryTaskButton" to="." method="_on_memory_task_button_pressed"]
+[connection signal="pressed" from="Background/FocusTaskButton" to="." method="_on_focus_task_button_pressed"]
+[connection signal="pressed" from="Background/ReactionTaskButton" to="." method="_on_reaction_task_button_pressed"]
+[connection signal="pressed" from="Background/LogOutButton" to="." method="_on_log_out_button_pressed"]
