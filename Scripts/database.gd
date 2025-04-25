@@ -64,7 +64,13 @@ func add_employee(employee: int, password: String, access: int) -> bool:
 		}
 		tasks_data.store_line(JSON.stringify(data))
 		
-		#TODO: Add Current file
+		var current_data = FileAccess.open("res://Data/Employees/" + str(employee) + "/Current", FileAccess.WRITE)
+		data = {
+			"score": 0,
+			"feedback": "No feedback yet"
+		}
+		
+		current_data.store_line(JSON.stringify(data))
 		return true
 	else:
 		print("User failed to create at: " + path)
