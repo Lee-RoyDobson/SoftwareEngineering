@@ -27,8 +27,7 @@ var Countdown : float = 5.0
 @onready var TextLabel: Label = $"../TextLabel"
 @onready var Submit : Button = $"../SubmitButton"
 var GameIsActive : bool = false
-
-var Difficulty : int = 2
+var NumberOfAttempts : int = 1
 
 func _ready() -> void:
 	StartTask()
@@ -74,17 +73,19 @@ func OnSubmit() -> void:
 	CalculateScore()
 
 func StartTask() -> void:
-	if Difficulty == 0:
+	if SessionManager.difficulty == 1:
 		Countdown = 15.0
 		LoopLimit = 3
-	elif Difficulty == 1:
+	elif SessionManager.difficulty == 2:
 		Countdown = 10.0
 		LoopLimit = 4
 	else:
 		Countdown = 5.0
 		LoopLimit = 6
 	
+	TimerLabel.visible = true
 	Submit.visible = false
+	TextLabel.text = "Memorise the Pattern!"
 	RandomisStartingImages()
 
 func CalculateScore() -> void:
@@ -94,10 +95,20 @@ func CalculateScore() -> void:
 	else:
 		TextLabel.text = "Failed!"
 		$"../RetryButton".disabled = false
+		return
+	
+	if (NumberOfAttempts == 1):
+		SessionManager.add_score(-2)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
+	elif (NumberOfAttempts <= 3):
+		SessionManager.add_score(1)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
+	else:
+		SessionManager.add_score(3)
+		Database.save_record(SessionManager.user_number, "Really nice feedback", SessionManager.score)
 
 func SaveToDatabase() -> void:
 	pass
-
 
 func _on_main_menu_button_pressed():
 	$"../MainMenuButton".disabled = true
@@ -107,4 +118,5 @@ func _on_main_menu_button_pressed():
 
 func _on_retry_button_pressed():
 	$"../RetryButton".disabled = true
+	NumberOfAttempts += 1
 	StartTask()
