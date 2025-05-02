@@ -19,12 +19,26 @@ func _ready():
 					$Background/MemoryTaskButton.disabled = true
 				"reaction":
 					$Background/ReactionTaskButton.disabled = true
-
-
-
-
-
-
+					
+	if $Background/FocusTaskButton.disabled and $Background/MemoryTaskButton.disabled and $Background/ReactionTaskButton.disabled == true:
+		if SessionManager.score > 9:
+			$Background/FeedbackLabel.text = "Go home you are extremly fatigued"
+		elif abs(SessionManager.score) == 8:
+			$Background/FeedbackLabel.text = "Take a 20 minute break you're highly fatigued"
+		elif abs(SessionManager.score) == 7:
+			$Background/FeedbackLabel.text = "Take a 20 minute break you're highly fatigued"
+		elif abs(SessionManager.score) == 6:
+			$Background/FeedbackLabel.text = "Take a 15 minute break you're fatigued"
+		elif abs(SessionManager.score) == 5:
+			$Background/FeedbackLabel.text = "Take a 10 minute break you're fatigued"
+		elif abs(SessionManager.score) == 4:
+			$Background/FeedbackLabel.text = "Take a 5 minute break you're mildly fatigued"
+		elif abs(SessionManager.score) == 3:
+			$Background/FeedbackLabel.text = "You're slightly fatigued"
+		elif abs(SessionManager.score) == 2:
+			$Background/FeedbackLabel.text = "You're slightly fatigued"
+		elif abs(SessionManager.score) == 1:
+			$Background/FeedbackLabel.text = "You're not fatigued at all"
 
 func _on_memory_task_button_pressed() -> void:
 
