@@ -71,9 +71,9 @@ text = "Log Out"
 
 [node name="CurrentFatigueScore" type="Label" parent="Background"]
 layout_mode = 0
-offset_left = 688.0
+offset_left = 176.0
 offset_top = 320.0
-offset_right = 1240.0
+offset_right = 1744.0
 offset_bottom = 452.0
 label_settings = SubResource("LabelSettings_cdwpa")
 horizontal_alignment = 1
@@ -81,9 +81,9 @@ vertical_alignment = 1
 
 [node name="FeedbackLabel" type="Label" parent="Background"]
 layout_mode = 0
-offset_left = 400.0
+offset_left = 384.0
 offset_top = 712.0
-offset_right = 1528.0
+offset_right = 1544.0
 offset_bottom = 806.0
 label_settings = SubResource("LabelSettings_a8633")
 horizontal_alignment = 1
